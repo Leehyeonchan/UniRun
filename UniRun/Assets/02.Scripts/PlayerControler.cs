@@ -139,15 +139,20 @@ public class PlayerControler : MonoBehaviour
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // 트리거 콜라이더를 가진 장애물과의 충돌 감지
+        // 트리거 콜라이더를 가진 장애물과의 충돌 감지
 
-            // 충돌한 상대방의 태그가 Dead 이면서 , 아직 사망하지
-            // 않았다면
+        // 충돌한 상대방의 태그가 Dead 이면서 , 아직 사망하지
+        // 않았다면
 
-            if(collision.tag == "Dead" && !isDead)
-            {
-                Die();
-            }
+        if (collision.tag == "Dead" && !isDead)
+        {
+            Die();
+        }
+        
+        else if (collision.tag == "Spark" && !isDead)
+        {
+            GameManager.instance.Crash();
+        }
         }
 
     // 충돌1 유니티! 충돌 굉장히 다양하게 사용이 됩니다
